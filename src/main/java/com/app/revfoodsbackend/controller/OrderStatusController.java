@@ -52,7 +52,7 @@ public class OrderStatusController {
 	}
 	
 	@GetMapping("/orderstatuses")
-	public List<OrderStatus>  getAllStatuses() {
+	public List<OrderStatus>  getAllOrderStatuses() {
 		
 	
 		return orderStatusService.getAllOrderStatuses();
