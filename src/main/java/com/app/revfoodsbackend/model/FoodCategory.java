@@ -11,11 +11,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
-
-
 import lombok.Data;
 
-@Component
 @Data
 @Entity
 @Table
@@ -29,6 +26,4 @@ public class FoodCategory {
 	
 	@OneToMany(mappedBy = "foodCategory", cascade = CascadeType.ALL)
 	private List<Food> foodList;
-
-
 }
