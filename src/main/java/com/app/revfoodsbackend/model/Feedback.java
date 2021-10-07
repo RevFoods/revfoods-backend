@@ -25,9 +25,9 @@ public class Feedback {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int feedbackId;
 	private String feedback;
-	private int hygeine;
+	private int hygiene;
 	private int service;
-	private int ambeience;
+	private int ambience;
 	
 	@OneToOne
 	@JoinColumn(name = "customerId", referencedColumnName = "customerId")
