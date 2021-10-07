@@ -37,7 +37,7 @@ public class Customer {
 
 	@OneToOne
 	@JoinColumn(name = "tableId", referencedColumnName="tableId")
-	private Table table;
+	private CustomerTable customerTable;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL )
