@@ -35,9 +35,9 @@ public class FeedbackController {
 	}
 
 	@PutMapping("/feedback")
-	public void updateFeedback(@RequestBody Feedback feedback) {
+	public Feedback updateFeedback(@RequestBody Feedback feedback) {
 
-		feedbackService.updateFeedback(feedback);
+		return feedbackService.updateFeedback(feedback);
 	}
 
 	@GetMapping("/feedback/{feedbackId}")
