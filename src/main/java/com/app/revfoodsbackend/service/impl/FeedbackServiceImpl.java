@@ -16,7 +16,7 @@ public class FeedbackServiceImpl implements FeedbackService {
 	@Autowired
 	private FeedbackRepository feedbackRepository;
 
-	private static List<Feedback> list = new ArrayList<>();
+	
 
 	@Override
 	public Feedback addFeedback(Feedback feedback) {
@@ -31,9 +31,9 @@ public class FeedbackServiceImpl implements FeedbackService {
 	}
 
 	@Override
-	public void updateFeedback(Feedback feedback) {
+	public Feedback updateFeedback(Feedback feedback) {
 
-		feedbackRepository.save(feedback);
+		return feedbackRepository.save(feedback);
 	}
 
 	@Override
