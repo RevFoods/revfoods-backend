@@ -36,9 +36,9 @@ public class OrderStatusServiceImpl implements OrderStatusService {
 	}
 
 	@Override
-	public OrderStatus getOrderStatusById(int id) {
+	public OrderStatus getOrderStatusById(int orderStatusId) {
 		
-		return orderStatusRepository.findById(id).get();
+		return orderStatusRepository.findById(orderStatusId).get();
 	}
 
 	@Override
