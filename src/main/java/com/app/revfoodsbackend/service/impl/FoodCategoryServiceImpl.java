@@ -14,34 +14,30 @@ import com.app.revfoodsbackend.service.FoodCategoryService;
 public class FoodCategoryServiceImpl implements FoodCategoryService {
 	
 	@Autowired
-	private FoodCategoryRepository repository;
+	private FoodCategoryRepository foodCategoryRepository;
 
 	@Override
 	public List<FoodCategory> getAllFoodCategories() {
 		return repository.findAll();
 	}
 
-
 	@Override
 	public FoodCategory updateFoodCategory(FoodCategory foodCategory) {
-
-		return repository.save(foodCategory);
+		return foodCategoryRepository.save(foodCategory);
 	}
 
 	@Override
 	public FoodCategory getFoodCategoryById(int foodCategoryId) {
-
-		return repository.findById(foodCategoryId).get();
+		return foodCategoryRepository.findById(foodCategoryId).get();
 	}
 
 	@Override
 	public void deleteFoodCategory(int foodCategoryId) {
-		repository.deleteById(foodCategoryId);
+		foodCategoryRepository.deleteById(foodCategoryId);
 	}
 
 	@Override
 	public FoodCategory addFoodCategory(FoodCategory foodCategory) {
-
-		return repository.save(foodCategory);
+		return foodCategoryRepository.save(foodCategory);
 	}
 }
