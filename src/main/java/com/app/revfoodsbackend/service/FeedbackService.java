@@ -8,7 +8,7 @@ public interface FeedbackService {
 
 	public Feedback addFeedback(Feedback feedback);
 	public void deleteFeedback(int feedbackId);
-	public void updateFeedback(Feedback feedback);
+	public Feedback updateFeedback(Feedback feedback);
 	public Feedback getFeedbackById(int feedbackId);
 	public List<Feedback> getAllFeedbacks();
 	
