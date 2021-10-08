@@ -33,11 +33,11 @@ public class Food
 	private double foodPrice;
 	private String foodName;
 	private String foodAvatar;
-    private int foodPrepTime;
+    	private int foodPrepTime;
 	private String foodType;	
 	private String foodStatus;
 	
-    @JsonIgnore
+    	@JsonIgnore
 	@ManyToOne
 	@JoinColumn("foodCategoryId")
 	FoodCategory foodCategory;
@@ -45,5 +45,4 @@ public class Food
 	@JsonIgnore
 	@OneToMany(mappedBy = "food", cascade = CascadeType.ALL)
 	List<Cart> cartList;
-
 }
