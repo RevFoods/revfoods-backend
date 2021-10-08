@@ -29,7 +29,7 @@ public class SupervisorController {
 	
 	@GetMapping("/supervisors")
 	public List<Supervisor> getSupervisors(){
-		return supervisorService.getSupervisors();
+		return supervisorService.getAllSupervisors();
 	}
 	
 	
