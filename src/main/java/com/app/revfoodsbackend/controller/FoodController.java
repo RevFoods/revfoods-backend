@@ -15,40 +15,35 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.revfoodsbackend.model.Food;
 import com.app.revfoodsbackend.service.FoodService;
 
-
-
-
 @RestController
 @CrossOrigin
 public class FoodController 
 {
 	@Autowired
-	private FoodService service;
+	private FoodService foodService;
 
-	@PostMapping("/Food")
+	@PostMapping("/food")
 	public Food addFood(@RequestBody Food food) {
-
-		return service.addFood(food);
+		return foodService.addFood(food);
 	}
 
-	@PutMapping("/Food")
+	@PutMapping("/food")
 	public Food updateFood(@RequestBody Food food) {
-		return service.updateFood(food);
+		return foodService.updateFood(food);
 	}
 
-	@GetMapping("/Food")
-	public List<Food> getAllFood() {
-		return service.getAllFoods();
+	@GetMapping("/food")
+	public List<Food> getAllFoods() {
+		return foodService.getAllFoods();
 	}
 
-	@GetMapping("/Food/{FoodId}")
-	public Food getFoodById(@PathVariable int FoodId) {
-		return service.getFoodByFoodId(FoodId);
+	@GetMapping("/food/{foodId}")
+	public Food getFoodById(@PathVariable int foodId) {
+		return foodService.getFoodByFoodId(foodId);
 	}
 
-	@DeleteMapping("/Food/{FoodId}")
-	public void deleteFood(@PathVariable int FoodId) {
-		service.deleteFood(FoodId);
+	@DeleteMapping("/food/{foodId}")
+	public void deleteFood(@PathVariable int foodId) {
+		foodService.deleteFood(foodId);
 	}
-
 }
