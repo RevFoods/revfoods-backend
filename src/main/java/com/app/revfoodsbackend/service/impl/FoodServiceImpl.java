@@ -9,38 +9,35 @@ import com.app.revfoodsbackend.model.Food;
 import com.app.revfoodsbackend.repository.FoodRepository;
 import com.app.revfoodsbackend.service.FoodService;
 
-
-
 @Service
-public class FoodServiceImpl implements FoodService
-{
+public class FoodServiceImpl implements FoodService {
+	
 	@Autowired
-	private FoodRepository repository;
+	private FoodRepository foodRepository;
 
 	@Override
 	public Food addFood(Food food) {
-		return repository.save(food);
+		return foodRepository.save(food);
 	}
 
 	@Override
 	public Food updateFood(Food food) {
-		return repository.save(food);
+		return foodRepository.save(food);
 	}
 
 	@Override
 	public List<Food> getAllFoods() {
-		return repository.findAll();
+		return foodRepository.findAll();
 	}
 
 	@Override
 	public Food getFoodByFoodId(int foodId) {
-		return repository.findById(foodId).get();
+		return foodRepository.findById(foodId).get();
 	}
 
 	@Override
 	public void deleteFood(int foodId) {
-		repository.deleteById(foodId);
-		
+		foodRepository.deleteById(foodId);	
 	}
 }
 	
