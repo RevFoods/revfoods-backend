@@ -35,6 +35,11 @@ public class SupervisorServiceImpl implements SupervisorService {
     }
 
     @Override
+    public Supervisor getSupervisorByUsernameAndPassword(String supervisorUsername, String supervisorPassword) {
+        return supervisorRepository.findSupervisorBySupervisorUsernameAndSupervisorPassword(supervisorUsername, supervisorPassword);
+    }
+
+    @Override
     public Supervisor getSupervisorBySupervisorId(int supervisorId) {
         return supervisorRepository.findById(supervisorId).get();
     }

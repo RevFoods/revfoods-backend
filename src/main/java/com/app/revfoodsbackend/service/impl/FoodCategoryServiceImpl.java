@@ -3,6 +3,7 @@ package com.app.revfoodsbackend.service.impl;
 import com.app.revfoodsbackend.model.FoodCategory;
 import com.app.revfoodsbackend.repository.FoodCategoryRepository;
 import com.app.revfoodsbackend.service.FoodCategoryService;
+import com.app.revfoodsbackend.service.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

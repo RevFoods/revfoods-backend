@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 public class FoodController {
+
     @Autowired
     private FoodService foodService;
 
@@ -23,7 +24,7 @@ public class FoodController {
         return foodService.updateFood(food);
     }
 
-    @GetMapping("/food")
+    @GetMapping("/foods")
     public List<Food> getAllFoods() {
         return foodService.getAllFoods();
     }
@@ -36,5 +37,20 @@ public class FoodController {
     @DeleteMapping("/food/{foodId}")
     public void deleteFood(@PathVariable int foodId) {
         foodService.deleteFood(foodId);
+    }
+
+    @GetMapping("/foods/foodCategory/{foodCategoryId}")
+    public List<Food> getFoodsByCategoryId(@PathVariable int foodCategoryId) {
+        return foodService.getFoodsByCategoryId(foodCategoryId);
+    }
+
+    @GetMapping("/food/foodCategory/{foodCategoryId}")
+    public Food addFoodToFoodCategory(@RequestBody Food food,@PathVariable int foodCategoryId) {
+        return foodService.addFoodToFoodCategory(food, foodCategoryId);
+    }
+
+    @PutMapping("/food/{foodId}/foodStatus/{foodStatus}")
+    public Food updateFoodStatus(@PathVariable int foodId,@PathVariable boolean foodStatus) {
+        return foodService.updateFoodStatus(foodId, foodStatus);
     }
 }

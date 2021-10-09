@@ -2,6 +2,7 @@ package com.app.revfoodsbackend.service;
 
 import com.app.revfoodsbackend.model.FoodOrder;
 
+import javax.persistence.criteria.Order;
 import java.util.List;
 
 public interface FoodOrderService {
@@ -10,4 +11,8 @@ public interface FoodOrderService {
     FoodOrder getFoodOrderById(int foodOrderId);
     void deleteFoodOrder(int foodOrderId);
     List<FoodOrder> getAllFoodOrders();
+    FoodOrder addCartToFoodOrder(int cartId);
+    List<FoodOrder> getFoodOrdersByCustomerId(int customerId);
+    FoodOrder updateFoodOrderStatus(int orderId, int orderStatusId);
+    List<FoodOrder> getAllFoodOrdersByOrderStatusId(int orderStatusId);
 }

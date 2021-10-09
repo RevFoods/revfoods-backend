@@ -39,4 +39,10 @@ public class HelpServiceImpl implements HelpService {
         return helpRepository.findAll();
     }
 
+    @Override
+    public Help updateHelpStatus(int helpId, boolean helpStatus) {
+        Help help = helpRepository.getById(helpId);
+        help.setHelpStatus(helpStatus);
+        return helpRepository.save(help);
+    }
 }

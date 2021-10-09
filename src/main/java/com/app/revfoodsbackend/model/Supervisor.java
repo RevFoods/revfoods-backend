@@ -19,14 +19,16 @@ public class Supervisor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int supervisorId;
+    private String supervisorUsername;
+    private String supervisorPassword;
 
     @OneToMany(mappedBy = "supervisor", cascade = CascadeType.ALL)
     @ToString.Exclude
     private List<FoodOrder> foodOrderList;
 
-    @OneToOne
-    @JoinColumn(name = "helpId", referencedColumnName = "helpId")
-    private Help help;
+    @OneToMany(mappedBy = "supervisor", cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private List<Help> helpList;
 
     @Override
     public boolean equals(Object o) {

@@ -7,5 +7,5 @@ import com.app.revfoodsbackend.model.Chef;
 
 @Repository
 public interface ChefRepository extends JpaRepository<Chef, Integer> {
-
+    Chef findChefByChefUsernameAndChefPassword(String chefUsername, String chefPassword);
 }

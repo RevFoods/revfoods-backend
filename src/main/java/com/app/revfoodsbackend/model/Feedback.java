@@ -23,8 +23,7 @@ public class Feedback {
     private int service;
     private int ambience;
 
-    @OneToOne
-    @JoinColumn(name = "customerId", referencedColumnName = "customerId")
+    @OneToOne(mappedBy = "feedback", cascade = CascadeType.ALL)
     private Customer customer;
 
     @Override

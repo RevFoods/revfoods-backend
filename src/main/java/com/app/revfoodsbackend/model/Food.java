@@ -5,6 +5,7 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -27,12 +28,15 @@ public class Food {
     private String foodAvatar;
     private int foodPrepTime;
     private String foodType;
-    private String foodStatus;
+    private boolean foodStatus;
 
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "foodCategoryId", referencedColumnName = "foodCategoryId")
     private FoodCategory foodCategory;
+
+    @OneToMany(mappedBy = "food", cascade = CascadeType.ALL)
+    private List<Cart> cartList;
 
     @Override
     public boolean equals(Object o) {

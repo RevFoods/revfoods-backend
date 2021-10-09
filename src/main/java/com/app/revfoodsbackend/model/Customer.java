@@ -4,6 +4,7 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -25,6 +26,17 @@ public class Customer {
     @OneToOne
     @JoinColumn(name = "customerTableId", referencedColumnName = "customerTableId")
     private CustomerTable customerTable;
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<Cart> cartList;
+
+    @OneToOne
+    @JoinColumn(name = "feedbackId", referencedColumnName = "feedbackId")
+    private Feedback feedback;
+
+    @OneToOne
+    @JoinColumn(name = "helpId", referencedColumnName = "helpId")
+    private Help help;
 
     @Override
     public boolean equals(Object o) {

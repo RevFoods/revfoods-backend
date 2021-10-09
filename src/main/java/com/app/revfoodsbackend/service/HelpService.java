@@ -10,4 +10,5 @@ public interface HelpService {
     Help getHelpById(int helpId);
     void deleteHelp(int helpId);
     List<Help> getAllHelps();
+    Help updateHelpStatus(int helpId, boolean helpStatus);
 }

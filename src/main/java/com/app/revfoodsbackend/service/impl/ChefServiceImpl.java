@@ -39,4 +39,9 @@ public class ChefServiceImpl implements ChefService {
         return chefRepository.findById(chefId).get();
     }
 
+    @Override
+    public Chef getChefByChefUsernameAndChefPassword(String chefUsername, String chefPassword) {
+        return chefRepository.findChefByChefUsernameAndChefPassword(chefUsername, chefPassword);
+    }
+
 }

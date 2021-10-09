@@ -10,4 +10,5 @@ public interface SupervisorService {
     List<Supervisor> getAllSupervisors();
     Supervisor getSupervisorBySupervisorId(int supervisorId);
     Supervisor updateSupervisor(Supervisor supervisor);
+    Supervisor getSupervisorByUsernameAndPassword(String supervisorUsername,String supervisorPassword);
 }

@@ -20,15 +20,15 @@ public class Help {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int helpId;
     private String help;
-
-    @OneToOne
-    @JoinColumn(name = "customerId", referencedColumnName = "customerId")
-    private Customer customer;
+    private boolean helpStatus;
 
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "supervisorId", referencedColumnName = "supervisorId")
     private Supervisor supervisor;
+
+    @OneToOne(mappedBy = "help", cascade = CascadeType.ALL)
+    private Customer customer;
 
     @Override
     public boolean equals(Object o) {

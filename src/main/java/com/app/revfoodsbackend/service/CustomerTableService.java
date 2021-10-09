@@ -10,4 +10,6 @@ public interface CustomerTableService {
     CustomerTable getCustomerTableById(int customerTableId);
     void deleteCustomerTable(int customerTableId);
     List<CustomerTable> getAllCustomerTables();
+    List<CustomerTable> getAllCustomerTablesByCustomerTableStatus(boolean customerTableStatus);
+    CustomerTable updateCustomerTableStatus(int customerTableId, boolean customerTableStatus);
 }

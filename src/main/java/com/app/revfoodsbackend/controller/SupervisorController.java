@@ -39,4 +39,9 @@ public class SupervisorController {
     public Supervisor getSupervisorById(@PathVariable int supervisorId) {
         return supervisorService.getSupervisorBySupervisorId(supervisorId);
     }
+
+    @PostMapping("/supervisor/login")
+    public Supervisor getSupervisorByUsernameAndPassword(@RequestBody Supervisor supervisor) {
+        return  supervisorService.getSupervisorByUsernameAndPassword(supervisor.getSupervisorUsername(), supervisor.getSupervisorPassword());
+    }
 }

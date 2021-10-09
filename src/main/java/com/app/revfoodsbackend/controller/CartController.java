@@ -37,7 +37,15 @@ public class CartController {
     @DeleteMapping("/cart/{cartId}")
     public void deleteCart(@PathVariable int cartId) {
         cartService.deleteCart(cartId);
-
     }
 
+    @PostMapping("/cart/customer/{customerId}/food/{foodId}/cartQuantity/{cartQuantity}")
+    public Cart addFoodAndCustomerToCart(@PathVariable int foodId, @PathVariable int customerId,@PathVariable int cartQuantity) {
+        return cartService.addFoodAndCustomerToCart(foodId, customerId, cartQuantity);
+    }
+
+    @GetMapping("/cart/customer/{customerId}")
+    public List<Cart> getAllCartsByCustomerId(@PathVariable int customerId) {
+        return cartService.getAllCartsByCustomerId(customerId);
+    }
 }

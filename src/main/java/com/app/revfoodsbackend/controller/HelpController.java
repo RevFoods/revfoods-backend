@@ -38,4 +38,9 @@ public class HelpController {
     public List<Help> getAllHelps() {
         return helpService.getAllHelps();
     }
+
+    @PutMapping("/help/{helpId}/helpStatus/{helpStatus}")
+    public Help updateHelpStatus(@PathVariable int helpId, @PathVariable boolean helpStatus) {
+        return helpService.updateHelpStatus(helpId, helpStatus);
+    }
 }

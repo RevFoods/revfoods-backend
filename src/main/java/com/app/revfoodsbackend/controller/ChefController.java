@@ -39,4 +39,8 @@ public class ChefController {
         return chefService.getChefById(chefId);
     }
 
+    @PostMapping("/chef/login")
+    public Chef getChefByUsernameAndPassword(@RequestBody Chef chef) {
+        return chefService.getChefByChefUsernameAndChefPassword(chef.getChefUsername(), chef.getChefPassword());
+    }
 }

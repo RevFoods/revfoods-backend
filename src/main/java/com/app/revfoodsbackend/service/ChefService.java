@@ -10,4 +10,5 @@ public interface ChefService {
     void deleteChef(int chefId);
     List<Chef> getAllChefs();
     Chef getChefById(int chefId);
+    Chef getChefByChefUsernameAndChefPassword(String chefUsername, String chefPassword);
 }

@@ -20,13 +20,17 @@ public class Cart {
     private int cartId;
     private int cartQuantity;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "customerId", referencedColumnName = "customerId")
     private Customer customer;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "foodId", referencedColumnName = "foodId")
     private Food food;
+
+    @OneToOne(mappedBy = "cart")
+    private FoodOrder foodOrder;
+
 
     @Override
     public boolean equals(Object o) {

@@ -38,4 +38,24 @@ public class FoodOrderController {
     public List<FoodOrder> getAllFoodOrders() {
         return foodOrderService.getAllFoodOrders();
     }
+
+    @PostMapping("/order/cart/{cartId}")
+    public FoodOrder addCartToFoodOrder(@PathVariable int cartId) {
+        return foodOrderService.addCartToFoodOrder(cartId);
+    }
+
+    @GetMapping("/orders/customer/{customerId}")
+    public List<FoodOrder> getFoodOrdersByCustomerId(@PathVariable int customerId) {
+        return foodOrderService.getFoodOrdersByCustomerId(customerId);
+    }
+
+    @PutMapping("/order/{orderId}/orderStatus/{orderStatusId}")
+    public FoodOrder updateFoodOrderStatus(@PathVariable int orderId,@PathVariable int orderStatusId) {
+        return foodOrderService.updateFoodOrderStatus(orderId, orderStatusId);
+    }
+
+    @GetMapping("/orders/orderStatus/{orderStatusId}")
+    public List<FoodOrder> getAllFoodOrdersByOrderStatusId(@PathVariable int orderStatusId) {
+        return foodOrderService.getAllFoodOrdersByOrderStatusId(orderStatusId);
+    }
 }

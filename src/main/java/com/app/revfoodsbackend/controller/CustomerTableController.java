@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-public class TableController {
+public class CustomerTableController {
 
     @Autowired
     private CustomerTableService customerTableService;
@@ -21,7 +21,6 @@ public class TableController {
 
     @PutMapping("/customerTable")
     public CustomerTable updateTable(@RequestBody CustomerTable customerTable) {
-
         return customerTableService.updateCustomerTable(customerTable);
     }
 
@@ -38,5 +37,10 @@ public class TableController {
     @GetMapping("/customerTables")
     public List<CustomerTable> getAllTables() {
         return customerTableService.getAllCustomerTables();
+    }
+
+    @GetMapping("/customerTables/customerTableStatus/{customerTableStatus}")
+    public List<CustomerTable> getAllCustomerTablesByCustomerTableStatus(@PathVariable boolean customerTableStatus) {
+        return customerTableService.getAllCustomerTablesByCustomerTableStatus(customerTableStatus);
     }
 }

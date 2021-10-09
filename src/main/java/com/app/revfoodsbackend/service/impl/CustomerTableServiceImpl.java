@@ -38,4 +38,16 @@ public class CustomerTableServiceImpl implements CustomerTableService {
     public List<CustomerTable> getAllCustomerTables() {
         return customerTableRepository.findAll();
     }
+
+    @Override
+    public List<CustomerTable> getAllCustomerTablesByCustomerTableStatus(boolean customerTableStatus) {
+        return customerTableRepository.findAllByCustomerTableStatus(customerTableStatus);
+    }
+
+    @Override
+    public CustomerTable updateCustomerTableStatus(int customerTableId, boolean customerTableStatus) {
+        CustomerTable customerTable = customerTableRepository.findById(customerTableId).get();
+        customerTable.setCustomerTableStatus(customerTableStatus);
+        return customerTableRepository.save(customerTable);
+    }
 }
