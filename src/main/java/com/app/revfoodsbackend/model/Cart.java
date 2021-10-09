@@ -1,34 +1,43 @@
 package com.app.revfoodsbackend.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import lombok.*;
+import org.hibernate.Hibernate;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import javax.persistence.*;
+import java.util.Objects;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table
-@Data
+@Getter
+@Setter
+@ToString
 public class Cart {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int cartId;
-	private int cartQuantity;
-	
-	@ManyToOne
-	@JoinColumn(name="customerId", referencedColumnName = "customerId")
-	Customer customer;
-	
-	@ManyToOne
-	@JoinColumn(name="foodId", referencedColumnName = "foodId")
-	Food food;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int cartId;
+    private int cartQuantity;
+
+    @OneToOne
+    @JoinColumn(name = "customerId", referencedColumnName = "customerId")
+    private Customer customer;
+
+    @OneToOne
+    @JoinColumn(name = "foodId", referencedColumnName = "foodId")
+    private Food food;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Cart cart = (Cart) o;
+        return Objects.equals(cartId, cart.cartId);
+    }
+
+    @Override
+    public int hashCode() {
+        return 0;
+    }
 }

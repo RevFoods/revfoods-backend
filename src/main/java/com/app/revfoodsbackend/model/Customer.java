@@ -1,45 +1,41 @@
 package com.app.revfoodsbackend.model;
 
-import java.util.List;
+import lombok.*;
+import org.hibernate.Hibernate;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.Objects;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-
-@Data
+@Getter
+@Setter
+@RequiredArgsConstructor
 @Entity
 @Table
 @AllArgsConstructor
-@NoArgsConstructor
 @ToString
 public class Customer {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int customerId;
 
-	private String customerName;
-	private String customerEmail;
-	private long customerPhone;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int customerId;
+    private String customerName;
+    private String customerEmail;
+    private long customerPhone;
 
-	@OneToOne
-	@JoinColumn(name = "tableId", referencedColumnName="tableId")
-	private CustomerTable customerTable;
-	
-	@JsonIgnore
-	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL )
-	List<Cart> cartList;
+    @OneToOne
+    @JoinColumn(name = "customerTableId", referencedColumnName = "customerTableId")
+    private CustomerTable customerTable;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Customer customer = (Customer) o;
+        return Objects.equals(customerId, customer.customerId);
+    }
+
+    @Override
+    public int hashCode() {
+        return 0;
+    }
 }

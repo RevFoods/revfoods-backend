@@ -1,34 +1,42 @@
 package com.app.revfoodsbackend.model;
 
+import lombok.*;
+import org.hibernate.Hibernate;
+
+import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Entity
 @Table
 @AllArgsConstructor
-@NoArgsConstructor
 public class Chef {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int chefId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int chefId;
+    private String chefName;
+    private String chefUsername;
+    private String chefPassword;
 
-	private String chefName;
+    @OneToMany(mappedBy = "chef", cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private List<FoodOrder> foodOrderList;
 
-	private String chefUsername;
-	private String chefPassword;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Chef chef = (Chef) o;
+        return Objects.equals(chefId, chef.chefId);
+    }
 
-	@OneToMany(mappedBy = "chef")
-	List<Order> orderList;
+    @Override
+    public int hashCode() {
+        return 0;
+    }
 }

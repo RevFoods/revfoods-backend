@@ -1,37 +1,45 @@
 package com.app.revfoodsbackend.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
+import org.hibernate.Hibernate;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import javax.persistence.*;
+import java.util.Objects;
 
-@Data
+@Getter
+@Setter
+@RequiredArgsConstructor
 @Entity
-@javax.persistence.Table
+@Table
 @AllArgsConstructor
-@NoArgsConstructor
 @ToString
 public class Help {
-	
-	@Id 
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int helpId;
 
-	private String help;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int helpId;
+    private String help;
 
-	@OneToOne
-	@JoinColumn(name = "customerId", referencedColumnName = "customerId")
-	Customer customer;
+    @OneToOne
+    @JoinColumn(name = "customerId", referencedColumnName = "customerId")
+    private Customer customer;
 
-	@ManyToOne
-	@JoinColumn(name = "supervisorId", referencedColumnName = "supervisorId")
-	Supervisor supervisor;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "supervisorId", referencedColumnName = "supervisorId")
+    private Supervisor supervisor;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Help help = (Help) o;
+        return Objects.equals(helpId, help.helpId);
+    }
+
+    @Override
+    public int hashCode() {
+        return 0;
+    }
 }

@@ -1,48 +1,49 @@
 package com.app.revfoodsbackend.model;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
+import org.hibernate.Hibernate;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import javax.persistence.*;
+import java.util.Objects;
 
-@Data
+@Getter
+@Setter
+@RequiredArgsConstructor
 @Entity
 @Table
 @AllArgsConstructor
-@NoArgsConstructor
 @ToString
-public class Food 
-{
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Id
-	private int foodId;
-	private double foodPrice;
-	private String foodName;
-	private String foodAvatar;
-    	private int foodPrepTime;
-	private String foodType;	
-	private String foodStatus;
-	
-    	@JsonIgnore
-	@ManyToOne
-	@JoinColumn("foodCategoryId")
-	FoodCategory foodCategory;
-	
-	@JsonIgnore
-	@OneToMany(mappedBy = "food", cascade = CascadeType.ALL)
-	List<Cart> cartList;
+public class Food {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int foodId;
+    private double foodPrice;
+    private String foodName;
+
+    @Lob
+    @Column(columnDefinition = "CLOB")
+    private String foodAvatar;
+    private int foodPrepTime;
+    private String foodType;
+    private String foodStatus;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "foodCategoryId", referencedColumnName = "foodCategoryId")
+    private FoodCategory foodCategory;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Food food = (Food) o;
+        return Objects.equals(foodId, food.foodId);
+    }
+
+    @Override
+    public int hashCode() {
+        return 0;
+    }
 }

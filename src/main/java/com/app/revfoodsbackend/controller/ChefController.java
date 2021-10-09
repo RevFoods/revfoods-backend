@@ -1,55 +1,42 @@
 package com.app.revfoodsbackend.controller;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.app.revfoodsbackend.model.Chef;
 import com.app.revfoodsbackend.service.ChefService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin
 public class ChefController {
 
-	@Autowired
-	private ChefService chefService;
+    @Autowired
+    private ChefService chefService;
 
-	@PostMapping("/chef")
-	public Chef addChef(@RequestBody Chef chef) {
+    @PostMapping("/chef")
+    public Chef addChef(@RequestBody Chef chef) {
+        return chefService.addChef(chef);
+    }
 
-		return chefService.addChef(chef);
-	}
+    @PutMapping("/chef")
+    public Chef updateChef(@RequestBody Chef chef) {
+        return chefService.updateChef(chef);
+    }
 
-	@PutMapping("/chef")
-	public Chef updateChef(@RequestBody Chef chef) {
+    @DeleteMapping("/chef/{chefId}")
+    public void deleteChef(@PathVariable int chefId) {
+        chefService.deleteChef(chefId);
+    }
 
-		return chefService.updateChef(chef);
-	}
+    @GetMapping("/chefs")
+    public List<Chef> getAllChefs() {
+        return chefService.getAllChefs();
+    }
 
-	@DeleteMapping("/chef/{chefId}")
-	public void deleteChef(@PathVariable int chefId) {
-
-		chefService.deleteChef(chefId);
-	}
-
-	@GetMapping("/chefs")
-	public List<Chef> getAllChefs() {
-
-		return chefService.getAllChefs();
-	}
-
-	@GetMapping("/chef/{chefId}")
-	public Chef getChefById(@PathVariable int chefId) {
-
-		return chefService.getChefById(chefId);
-	}
+    @GetMapping("/chef/{chefId}")
+    public Chef getChefById(@PathVariable int chefId) {
+        return chefService.getChefById(chefId);
+    }
 
 }

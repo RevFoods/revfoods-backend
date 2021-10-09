@@ -1,29 +1,36 @@
 package com.app.revfoodsbackend.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import lombok.*;
+import org.hibernate.Hibernate;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import javax.persistence.*;
+import java.util.Objects;
 
-@Data
+@Getter
+@Setter
+@RequiredArgsConstructor
 @Entity
 @Table
 @AllArgsConstructor
-@NoArgsConstructor
 @ToString
 public class CustomerTable {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private  int customerTableId;
-	
-	private int customerTableNumber;
-	
-	private boolean customerTableStatus;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int customerTableId;
+    private int customerTableNumber;
+    private boolean customerTableStatus;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        CustomerTable that = (CustomerTable) o;
+        return Objects.equals(customerTableId, that.customerTableId);
+    }
+
+    @Override
+    public int hashCode() {
+        return 0;
+    }
 }
