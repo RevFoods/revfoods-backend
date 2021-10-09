@@ -14,47 +14,47 @@ public class FoodOrderController {
     @Autowired
     private FoodOrderService foodOrderService;
 
-    @PostMapping("/order")
+    @PostMapping("/foodOrder")
     public FoodOrder addFoodOrder(@RequestBody FoodOrder foodOrder) {
         return foodOrderService.addFoodOrder(foodOrder);
     }
 
-    @GetMapping("/order/{orderId}")
-    public FoodOrder getFoodOrderById(@PathVariable int orderId) {
-        return foodOrderService.getFoodOrderById(orderId);
+    @GetMapping("/foodOrder/{foodOrderId}")
+    public FoodOrder getFoodOrderById(@PathVariable int foodOrderId) {
+        return foodOrderService.getFoodOrderById(foodOrderId);
     }
 
-    @DeleteMapping("/order/{orderId}")
-    public void deleteFoodOrder(@PathVariable int orderId) {
-        foodOrderService.deleteFoodOrder(orderId);
+    @DeleteMapping("/foodOrder/{foodOrderId}")
+    public void deleteFoodOrder(@PathVariable int foodOrderId) {
+        foodOrderService.deleteFoodOrder(foodOrderId);
     }
 
-    @PutMapping("/order")
+    @PutMapping("/foodOrder")
     public FoodOrder updateFoodOrder(@RequestBody FoodOrder foodOrder) {
         return foodOrderService.updateFoodOrder(foodOrder);
     }
 
-    @GetMapping("/orders")
+    @GetMapping("/foodOrders")
     public List<FoodOrder> getAllFoodOrders() {
         return foodOrderService.getAllFoodOrders();
     }
 
-    @PostMapping("/order/cart/{cartId}")
+    @PostMapping("/foodOrder/cart/{cartId}")
     public FoodOrder addCartToFoodOrder(@PathVariable int cartId) {
         return foodOrderService.addCartToFoodOrder(cartId);
     }
 
-    @GetMapping("/orders/customer/{customerId}")
+    @GetMapping("/foodOrders/customer/{customerId}")
     public List<FoodOrder> getFoodOrdersByCustomerId(@PathVariable int customerId) {
         return foodOrderService.getFoodOrdersByCustomerId(customerId);
     }
 
-    @PutMapping("/order/{orderId}/orderStatus/{orderStatusId}")
-    public FoodOrder updateFoodOrderStatus(@PathVariable int orderId,@PathVariable int orderStatusId) {
-        return foodOrderService.updateFoodOrderStatus(orderId, orderStatusId);
+    @PutMapping("/foodOrder/{foodOrderId}/orderStatus/{orderStatusId}")
+    public FoodOrder updateFoodOrderStatus(@PathVariable int foodOrderId,@PathVariable int orderStatusId) {
+        return foodOrderService.updateFoodOrderStatus(foodOrderId, orderStatusId);
     }
 
-    @GetMapping("/orders/orderStatus/{orderStatusId}")
+    @GetMapping("/foodOrders/orderStatus/{orderStatusId}")
     public List<FoodOrder> getAllFoodOrdersByOrderStatusId(@PathVariable int orderStatusId) {
         return foodOrderService.getAllFoodOrdersByOrderStatusId(orderStatusId);
     }

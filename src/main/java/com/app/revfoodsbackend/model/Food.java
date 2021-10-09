@@ -36,6 +36,7 @@ public class Food {
     private FoodCategory foodCategory;
 
     @OneToMany(mappedBy = "food", cascade = CascadeType.ALL)
+    @ToString.Exclude
     private List<Cart> cartList;
 
     @Override

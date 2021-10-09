@@ -46,7 +46,7 @@ public class CustomerController {
         return customerService.addCustomerTableToCustomer(customerTableId, customerId);
     }
 
-    @GetMapping("/customers/OrderStatus/{orderStatusId}")
+    @GetMapping("/customers/orderStatus/{orderStatusId}")
     public List<Customer> getAllCustomersByOrderStatusId(@PathVariable int orderStatusId) {
         return customerService.getAllCustomersByOrderStatusId(orderStatusId);
     }

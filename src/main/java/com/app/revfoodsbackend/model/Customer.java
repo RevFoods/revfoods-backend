@@ -28,6 +28,7 @@ public class Customer {
     private CustomerTable customerTable;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    @ToString.Exclude
     private List<Cart> cartList;
 
     @OneToOne

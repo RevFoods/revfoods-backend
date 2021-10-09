@@ -1,7 +1,6 @@
 package com.app.revfoodsbackend.service;
 
 import com.app.revfoodsbackend.model.Food;
-import com.app.revfoodsbackend.model.FoodCategory;
 
 import java.util.List;
 
