@@ -2,7 +2,6 @@ package com.app.revfoodsbackend.service;
 
 import com.app.revfoodsbackend.model.FoodOrder;
 
-import javax.persistence.criteria.Order;
 import java.util.List;
 
 public interface FoodOrderService {
