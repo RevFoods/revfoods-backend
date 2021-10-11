@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CartRepository extends JpaRepository<Cart, Integer>{
+public interface CartRepository extends JpaRepository<Cart, Integer> {
     Cart findCartByFoodOrder(FoodOrder foodOrder);
     List<Cart> findCartsByCustomer(Customer customer);
 }

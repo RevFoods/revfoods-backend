@@ -86,7 +86,7 @@ public class FoodOrderServiceImpl implements FoodOrderService {
 
         List<FoodOrder> foodOrderList = new ArrayList<>();
 
-        for(Cart cart : cartList) {
+        for (Cart cart : cartList) {
             if (foodOrderRepository.existsFoodOrderByCart(cart)) {
                 FoodOrder foodOrder = foodOrderRepository.findFoodOrderByCart(cart);
                 foodOrderList.add(foodOrder);

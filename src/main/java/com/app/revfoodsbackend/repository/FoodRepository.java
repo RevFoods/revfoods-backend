@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface FoodRepository extends JpaRepository<Food,Integer> {
-	List<Food> findAllByFoodCategory(FoodCategory foodCategory);
+public interface FoodRepository extends JpaRepository<Food, Integer> {
+    List<Food> findAllByFoodCategory(FoodCategory foodCategory);
 }

@@ -56,7 +56,7 @@ public class FoodServiceImpl implements FoodService {
         LocalTime localTime = LocalTime.now(zoneId);
         String foodType = "";
 
-        if(localTime.getHour() > 11 && localTime.getHour() <= 19) {
+        if (localTime.getHour() > 11 && localTime.getHour() <= 19) {
             foodType += "lunch";
         } else if (localTime.getHour() > 19 || localTime.getHour() <= 2) {
             foodType += "dinner";
