@@ -3,13 +3,7 @@ package com.app.revfoodsbackend.model;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import org.hibernate.Hibernate;
 
@@ -38,6 +32,11 @@ public class FoodCategory {
 	@OneToMany(mappedBy = "foodCategory", cascade = CascadeType.ALL)
 	@ToString.Exclude
 	private List<Food> foodList;
+	@Lob
+	@Column(columnDefinition = "CLOB")
+	@ApiModelProperty(value = "This is for image of food category")
+	private String foodCategoryAvatar;
+	private String foodCategoryDescription;
 
 	@Override
 	public boolean equals(Object o) {

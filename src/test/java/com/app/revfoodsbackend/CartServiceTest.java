@@ -65,7 +65,7 @@ public class CartServiceTest {
     @Test
     @Order(3)
     public void getCartByCartIdTest() {
-        when(cartRepository.getById(cart.getCartId())).thenReturn(cart);
+        when(cartRepository.findById(cart.getCartId())).thenReturn(Optional.of(cart));
         assertEquals(cart, cartService.getCartByCartId(cart.getCartId()));
     }
 

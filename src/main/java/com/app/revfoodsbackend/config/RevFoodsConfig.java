@@ -17,10 +17,11 @@ public class RevFoodsConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/**").permitAll().and().csrf().disable();
+        http.headers().frameOptions().disable();
     }
 
     @Bean
-    public Docket fooderzAPI() {
+    public Docket RevFoodsAPI() {
         return new Docket(DocumentationType.SWAGGER_2).select()
                 .apis(RequestHandlerSelectors.basePackage("com.app.revfoodsbackend")).build();
     }

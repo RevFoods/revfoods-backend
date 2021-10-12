@@ -101,7 +101,7 @@ public class FoodOrderServiceImplTest {
     @Test
     @Order(5)
     public void addCartToFoodOrderTest() {
-        when(cartRepository.getById(cart.getCartId())).thenReturn(cart);
+        when(cartRepository.findById(cart.getCartId())).thenReturn(Optional.of(cart));
         when(chefRepository.findById(chef.getChefId())).thenReturn(Optional.of(chef));
         when(supervisorRepository.findById(supervisor.getSupervisorId())).thenReturn(Optional.of(supervisor));
         when(orderStatusRepository.findById(orderStatus.getOrderStatusId())).thenReturn(Optional.of(orderStatus));
