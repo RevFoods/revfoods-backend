@@ -19,31 +19,31 @@ public class CustomerTableController {
 
 	@ApiOperation(value = "To add a new table")
 	@PostMapping("/customerTable")
-	public CustomerTable addCustomerTable(@RequestBody CustomerTable customerTable) {
+	public CustomerTable addTable(@RequestBody CustomerTable customerTable) {
 		return customerTableService.addCustomerTable(customerTable);
 	}
 
 	@ApiOperation(value = "To update the table")
 	@PutMapping("/customerTable")
-	public CustomerTable updateCustomerTable(@RequestBody CustomerTable customerTable) {
+	public CustomerTable updateTable(@RequestBody CustomerTable customerTable) {
 		return customerTableService.updateCustomerTable(customerTable);
 	}
 
 	@ApiOperation(value = "To delete the table")
 	@DeleteMapping("/customerTable/{customerTableId}")
-	public void deleteCustomerTable(@PathVariable int customerTableId) {
+	public void deleteTable(@PathVariable int customerTableId) {
 		customerTableService.deleteCustomerTable(customerTableId);
 	}
 
 	@ApiOperation(value = "To get table by the Table Id")
 	@GetMapping("/customerTable/{customerTableId}")
-	public CustomerTable getCustomerTableById(@PathVariable int customerTableId) {
+	public CustomerTable getTableById(@PathVariable int customerTableId) {
 		return customerTableService.getCustomerTableById(customerTableId);
 	}
 
 	@ApiOperation(value = "To get all  the tables")
 	@GetMapping("/customerTables")
-	public List<CustomerTable> getAllCustomerTables() {
+	public List<CustomerTable> getAllTables() {
 		return customerTableService.getAllCustomerTables();
 	}
 

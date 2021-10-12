@@ -65,9 +65,8 @@ public class CartServiceTest {
     @Test
     @Order(3)
     public void getCartByCartIdTest() {
-        when(cartRepository.findById(cart.getCartId())).thenReturn(Optional.of(cart));
+        when(cartRepository.getById(cart.getCartId())).thenReturn(cart);
         assertEquals(cart, cartService.getCartByCartId(cart.getCartId()));
-
     }
 
     @Test
@@ -91,28 +90,12 @@ public class CartServiceTest {
 
         Food newFood = foodRepository.save(food);
         cart.setFood(newFood);
+        //Cart newCart=cartRepository.save(cart);
+
 
         when(customerRepository.findById(customer.getCustomerId())).thenReturn(Optional.of(customer));
         when(foodRepository.findById(food.getFoodId())).thenReturn(Optional.of(food));
         when(cartRepository.save(cart)).thenReturn(cart);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         assertEquals(cart, cartService.addFoodAndCustomerToCart(food.getFoodId(), customer.getCustomerId(), cart.getCartQuantity()));
 
     }
