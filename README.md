@@ -7,7 +7,7 @@ RevFoods is an online order management platform designed for restaurants and hot
 <h2>Technologies Used </h2>
 <ul>
 <li>Java, Spring Boot</li>
-<li>H2 DB</li>
+<li>H2 Database </li>
 <li>Angular</li>
 <li>HTML/CSS/JS</li>
 <li>Bootstrap</li>
