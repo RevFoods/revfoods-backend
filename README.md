@@ -63,3 +63,7 @@ RevFoods is an online order management platform designed for restaurants and hot
 <li>Admin can add, update and delete dishes in the inventory.</li>
 <li>Admin can change the food menu according to the timing.</li>
 <li>Admin can view all order details of the customers.</li>
+
+<h2>Usage</h2>
+The customer must enter the requested details before proceeding to menu page. As other stakeholders, they should login using registered credentials. Only then the application features will be available for use. 
+
