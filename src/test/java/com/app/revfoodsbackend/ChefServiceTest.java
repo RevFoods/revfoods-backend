@@ -11,18 +11,18 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @TestMethodOrder(OrderAnnotation.class)
-
-public class ChefServiceImplTest {
+public class ChefServiceTest {
 
     @MockBean
     public ChefRepository chefRepository;
@@ -68,9 +68,9 @@ public class ChefServiceImplTest {
     @Test
     @Order(5)
     public void deleteChef() {
-        int id = 1;
-        when(chefRepository.findById(id)).thenReturn(Optional.of(chef));
-        assertEquals(chef, chefService.getChefById(id));
+        when(chefRepository.findById(chef.getChefId())).thenReturn(Optional.of(chef));
+        chefService.deleteChef(chef.getChefId());
+        verify(chefRepository).deleteById(chef.getChefId());
     }
 
     @Test
@@ -81,6 +81,4 @@ public class ChefServiceImplTest {
         when(chefRepository.findChefByChefUsernameAndChefPassword(chefUsername, chefPassword)).thenReturn(chef);
         assertEquals(chef, chefService.getChefByChefUsernameAndChefPassword(chefUsername, chefPassword));
     }
-
-
 }

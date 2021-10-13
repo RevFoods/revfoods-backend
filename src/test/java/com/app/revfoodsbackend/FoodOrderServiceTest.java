@@ -11,18 +11,18 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @TestMethodOrder(OrderAnnotation.class)
-
-public class FoodOrderServiceImplTest {
+public class FoodOrderServiceTest {
 
     FoodOrder foodOrder;
     Cart cart;
@@ -129,9 +129,9 @@ public class FoodOrderServiceImplTest {
     @Test
     @Order(8)
     public void deleteFoodOrder() {
-        int id = 1;
-        when(foodOrderRepository.findById(id)).thenReturn(Optional.of(foodOrder));
-        assertEquals(foodOrder, foodOrderService.getFoodOrderById(id));
+        when(foodOrderRepository.findById(foodOrder.getFoodOrderId())).thenReturn(Optional.of(foodOrder));
+        foodOrderService.deleteFoodOrder(foodOrder.getFoodOrderId());
+        verify(foodOrderRepository).deleteById(foodOrder.getFoodOrderId());
     }
 
 }

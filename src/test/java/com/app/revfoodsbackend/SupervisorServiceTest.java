@@ -11,18 +11,18 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @TestMethodOrder(OrderAnnotation.class)
-
-public class SupervisorServiceImplTest {
+public class SupervisorServiceTest {
 
     @MockBean
     public SupervisorRepository supervisorRepository;
@@ -68,9 +68,9 @@ public class SupervisorServiceImplTest {
     @Test
     @Order(5)
     public void deleteSupervisor() {
-        int id = 1;
-        when(supervisorRepository.findById(id)).thenReturn(Optional.of(supervisor));
-        assertEquals(supervisor, supervisorService.getSupervisorBySupervisorId(id));
+        when(supervisorRepository.findById(supervisor.getSupervisorId())).thenReturn(Optional.of(supervisor));
+        supervisorService.deleteSupervisor(supervisor.getSupervisorId());
+        verify(supervisorRepository).deleteById(supervisor.getSupervisorId());
     }
 
     @Test

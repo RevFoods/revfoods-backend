@@ -46,7 +46,7 @@ public class Food {
 	private String foodName;
 
 	@Lob
-	@Column(columnDefinition = "CLOB")
+	@Column(columnDefinition = "MEDIUMBLOB")
 	@ApiModelProperty(value = "This is for image of food")
 	private String foodAvatar;
 	@ApiModelProperty(value = "This is for preparation time of food")

@@ -15,12 +15,14 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -90,18 +92,24 @@ public class CartServiceTest {
 
         Food newFood = foodRepository.save(food);
         cart.setFood(newFood);
-        //Cart newCart=cartRepository.save(cart);
-
 
         when(customerRepository.findById(customer.getCustomerId())).thenReturn(Optional.of(customer));
         when(foodRepository.findById(food.getFoodId())).thenReturn(Optional.of(food));
         when(cartRepository.save(cart)).thenReturn(cart);
         assertEquals(cart, cartService.addFoodAndCustomerToCart(food.getFoodId(), customer.getCustomerId(), cart.getCartQuantity()));
-
     }
 
     @Test
     @Order(5)
+    public void updateCartTest() {
+        cart.setCartQuantity(5);
+        when(cartRepository.save(cart)).thenReturn(cart);
+        assertNotEquals("Navi Mumbai", cartService.updateCart(cart));
+    }
+
+
+    @Test
+    @Order(6)
     public void getAllCartsByCustomerIdTest() {
         Customer customer = new Customer();
         customer.setCustomerName("Akshay");
@@ -113,11 +121,10 @@ public class CartServiceTest {
     }
 
     @Test
-    @Order(6)
+    @Order(7)
     public void deleteCartTest() {
         when(cartRepository.findById(cart.getCartId())).thenReturn(Optional.of(cart));
         cartService.deleteCart(cart.getCartId());
         verify(cartRepository).deleteById(cart.getCartId());
     }
-
 }

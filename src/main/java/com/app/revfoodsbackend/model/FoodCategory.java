@@ -33,7 +33,7 @@ public class FoodCategory {
 	@ToString.Exclude
 	private List<Food> foodList;
 	@Lob
-	@Column(columnDefinition = "CLOB")
+	@Column(columnDefinition = "MEDIUMBLOB")
 	@ApiModelProperty(value = "This is for image of food category")
 	private String foodCategoryAvatar;
 	private String foodCategoryDescription;

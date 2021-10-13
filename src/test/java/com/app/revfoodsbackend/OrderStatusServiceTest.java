@@ -11,18 +11,18 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @TestMethodOrder(OrderAnnotation.class)
-
-public class OrderStatusServiceImplTest {
+public class OrderStatusServiceTest {
 
     @MockBean
     public OrderStatusRepository orderStatusRepository;
@@ -62,16 +62,13 @@ public class OrderStatusServiceImplTest {
     public void getAllOrderStatuses() {
         when(orderStatusRepository.findAll()).thenReturn(Stream.of(new OrderStatus(), new OrderStatus()).collect(Collectors.toList()));
         assertEquals(2, orderStatusService.getAllOrderStatuses().size());
-
     }
 
     @Test
     @Order(5)
     public void deleteOrderStatus() {
-        int id = 1;
-        when(orderStatusRepository.findById(id)).thenReturn(Optional.of(orderStatus));
-        assertEquals(orderStatus, orderStatusService.getOrderStatusById(id));
+        when(orderStatusRepository.findById(orderStatus.getOrderStatusId())).thenReturn(Optional.of(orderStatus));
+        orderStatusService.deleteOrderStatus(orderStatus.getOrderStatusId());
+        verify(orderStatusRepository).deleteById(orderStatus.getOrderStatusId());
     }
-
-
 }
