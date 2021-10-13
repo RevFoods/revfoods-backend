@@ -1,3 +1,11 @@
+![image](https://img.shields.io/badge/Contributors-4-red?style=for-the-badge&logo=github)
+![image](https://img.shields.io/badge/Branches-18-yellow?style=for-the-badge)
+![image](https://img.shields.io/badge/Spring%20Boot-v2.4.10-success?style=for-the-badge&logo=spring)
+![image](https://img.shields.io/badge/Angular-v8.3.8-red?style=for-the-badge&logo=angular)
+![image](https://img.shields.io/badge/Maven-v3.8.1-informational?style=for-the-badge)
+
+
+
 <h1>PROJECT 3: ORDER MANAGEMENT SYSTEM</h1>
 <h1>REVFOODS</h1>
 
@@ -5,22 +13,53 @@ RevFoods is an online order management platform designed for restaurants and hot
 
 
 <h2>Technologies Used </h2>
+<h3>Frontend</h3>
 <ul>
-<li>Java, Spring Boot</li>
-<li>H2 Database </li>
-<li>Angular</li>
-<li>HTML/CSS/JS</li>
-<li>Bootstrap</li>
-<li>Junit, Mockito, Jasmine, Karma</li>
-<li>WireFrame</li>
-<li>JaCoCo</li>
-<li>Postman</li>
-<li>AWS</li>
-<li>Docker</li>
-<li>Jenkins</li>
-<li>Tara</li>
-<li>Git</li>
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>JS</li>
+  <li>Angular</li>
+  <li>Bootstrap</li>
+  <li>WireFrame</li>
 </ul>
+
+<h3>Backend</h3>
+<ul>
+<li>Java</li>
+<li>Rest</li>
+<li>Spring Framwork</li>
+<li>Spring Boot</li>
+<li>Swagger</li>
+<li>Maven</li>
+</ul>
+
+<h3>Database</h3>
+<ul>
+<li>H2 Database </li>
+</ul>
+
+<h3>DevOps</h3>
+<ul>
+  <li>AWS</li>
+  <li>Docker</li>
+  <li>Jenkins</li>
+  <li>Git</li>
+</ul>
+
+<h3>Testing</h3>
+<ul>
+  <li>Junit, Mockito, Jasmine, Karma</li>
+  <li>JaCoCo</li>
+  <li>Postman</li>
+</ul>
+
+<h3>IDE</h3>
+<ul>
+<li>Spring Tool Suite IDE</li>
+<li>Visual Studio Code</li>
+</ul>
+  
+
 
 <h2>Features</h2>
 
@@ -63,6 +102,18 @@ RevFoods is an online order management platform designed for restaurants and hot
 <li>Admin can add, update and delete dishes in the inventory.</li>
 <li>Admin can change the food menu according to the timing.</li>
 <li>Admin can view all order details of the customers.</li>
+
+<h2>Getting Started</h2>
+<ol>
+<li>On GitHub, navigate to the main page of the repository.</li><br>
+<li>Above the list of files, click Code.</li><br>
+<li>To clone the repository using HTTPS, under "Clone with HTTPS", click . To clone the repository using an SSH key, including a certificate issued by your organization's SSH certificate authority, click Use SSH, then click . To clone a repository using GitHub CLI, click Use GitHub CLI, then click .</li><br>
+<li>Open Git Bash.</li><br>
+<li>Change the current working directory to the location where you want the cloned directory.</li>
+<br>git clone https://github.com/RevFoods<br>
+<br><li>Type git clone, and then paste the URL you copied earlier.</li><br>
+<li>Press Enter to create your local clone.</li><br>
+</ol>
 
 <h2>Usage</h2>
 The customer must enter the requested details before proceeding to menu page. As other stakeholders, they should login using registered credentials. Only then the application features will be available for use. 
