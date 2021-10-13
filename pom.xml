@@ -76,6 +76,6 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>revfoods-backend</finalName>
     </build>
-
 </project>

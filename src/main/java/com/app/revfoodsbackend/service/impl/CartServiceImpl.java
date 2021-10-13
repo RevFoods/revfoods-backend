@@ -66,4 +66,11 @@ public class CartServiceImpl implements CartService {
         Customer customer = customerService.getCustomerByCustomerId(customerId);
         return cartRepository.findCartsByCustomer(customer);
     }
+
+    @Override
+    public Cart updateCartOrderedStatus(int cartId, boolean cartOrderedStatus) {
+        Cart cart = cartRepository.findById(cartId).get();
+        cart.setCartOrderedStatus(cartOrderedStatus);
+        return cartRepository.save(cart);
+    }
 }

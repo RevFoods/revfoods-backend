@@ -37,6 +37,7 @@ public class Cart {
 	private int cartId;
 	@ApiModelProperty(value = "This is for quantity of cart")
 	private int cartQuantity;
+	private boolean cartOrderedStatus;
 
 	@ManyToOne
 	@JoinColumn(name = "customerId", referencedColumnName = "customerId")

@@ -61,6 +61,7 @@ public class Food {
 	@JoinColumn(name = "foodCategoryId", referencedColumnName = "foodCategoryId")
 	private FoodCategory foodCategory;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "food", cascade = CascadeType.ALL)
 	@ToString.Exclude
 	private List<Cart> cartList;

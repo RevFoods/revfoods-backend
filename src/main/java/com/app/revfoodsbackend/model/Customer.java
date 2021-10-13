@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.Hibernate;
 
 import io.swagger.annotations.ApiModel;
@@ -47,6 +48,7 @@ public class Customer {
 	@JoinColumn(name = "customerTableId", referencedColumnName = "customerTableId")
 	private CustomerTable customerTable;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
 	@ToString.Exclude
 	private List<Cart> cartList;

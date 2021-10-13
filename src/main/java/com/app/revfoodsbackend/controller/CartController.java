@@ -59,4 +59,10 @@ public class CartController {
 	public List<Cart> getAllCartsByCustomerId(@PathVariable int customerId) {
 		return cartService.getAllCartsByCustomerId(customerId);
 	}
+
+	@ApiOperation(value = "To change the cart ordered status.")
+	@PutMapping("/cart/{cartId}/cartOrderedStatus/{cartOrderedStatus}")
+	public Cart updateCartOrderedStatus(@PathVariable int cartId, @PathVariable boolean cartOrderedStatus) {
+		return cartService.updateCartOrderedStatus(cartId, cartOrderedStatus);
+	}
 }
