@@ -5,6 +5,7 @@ import java.util.Objects;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.Hibernate;
 
 import io.swagger.annotations.ApiModel;
@@ -28,7 +29,7 @@ public class FoodCategory {
 	private int foodCategoryId;
 	@ApiModelProperty(value = "This is for name of food category name")
 	private String foodCategoryName;
-
+	@JsonIgnore
 	@OneToMany(mappedBy = "foodCategory", cascade = CascadeType.ALL)
 	@ToString.Exclude
 	private List<Food> foodList;

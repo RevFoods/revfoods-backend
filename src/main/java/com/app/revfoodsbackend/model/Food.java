@@ -56,7 +56,6 @@ public class Food {
 	@ApiModelProperty(value = "This is for status of food")
 	private boolean foodStatus;
 
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "foodCategoryId", referencedColumnName = "foodCategoryId")
 	private FoodCategory foodCategory;

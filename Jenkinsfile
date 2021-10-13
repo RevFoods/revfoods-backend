@@ -38,7 +38,6 @@ pipeline {
 
         stage('Docker Deploy'){
             steps {
-                sh 'docker kill $(docker ps -q)'
                 sh 'docker run -itd -p  2020:2020 lala14/revfoods-backend:${BUILD_NUMBER}'
             }
         }
