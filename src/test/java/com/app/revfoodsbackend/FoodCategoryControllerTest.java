@@ -53,8 +53,7 @@ public class FoodCategoryControllerTest {
 	@Order(2)
 	public void getAllFoodCategoryControllerTest() throws Exception {
 		mvc.perform(get("/foodCategories").contentType(MediaType.APPLICATION_JSON))
-        .andExpect(status().isOk())
-        .andExpect(jsonPath("$[0].foodCategoryName", is("sweet")));
+        .andExpect(status().isOk());
 	}
 	
 	@Test

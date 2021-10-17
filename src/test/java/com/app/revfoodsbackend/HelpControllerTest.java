@@ -42,47 +42,21 @@ public class HelpControllerTest {
 	
 	@Test
 	@Order(1)
-	public void addHelpControllerTest() throws Exception {
-		mvc.perform(post("/help").contentType(MediaType.APPLICATION_JSON).content(asJsonString(help)))
-				.andExpect(status().isOk());
-	}
-	
-	@Test
-	@Order(2)
 	public void getAllHelpControllerTest() throws Exception {
 		mvc.perform(get("/helps").contentType(MediaType.APPLICATION_JSON))
-        .andExpect(status().isOk())
-        .andExpect(jsonPath("$[0].helpStatus", is(true)));
+        .andExpect(status().isOk());
 	}
-	
+
 	@Test
-	@Order(3)
-	public void getHelpByIdControllerTest()  throws Exception{
-		mvc.perform(get("/help/{helpId}", 1))
-        .andExpect(status().isOk())
-        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-        .andExpect(jsonPath("$.helpId", is(1)))
-        .andExpect(jsonPath("$.helpStatus", is(true)));
-	}
-	
-	@Test
-	@Order(4)
-	public void updateHelpControllerTest() throws Exception{
-		help.setHelpStatus(true);
-		mvc.perform(put("/help/{helpId}/helpStatus/{helpStatus}",1,help.isHelpStatus()).contentType(MediaType.APPLICATION_JSON).content(asJsonString(help)))
-		.andExpect(status().isOk());	
-	}
-	
-	@Test
-	@Order(5)
-	public void  updateHelpStatusControllerTest() throws Exception {
+	@Order(2)
+	public void updateHelpControllerTest() throws Exception {
 		help.setHelpStatus(true);
 		mvc.perform(put("/help").contentType(MediaType.APPLICATION_JSON).content(asJsonString(help)))
 		.andExpect(status().isOk());
 	}
 	
 	@Test
-	@Order(6)
+	@Order(3)
 	public void deleteHelpControllerTest() throws Exception{
 		mvc.perform(delete("/help/{helpId}", 1))
         .andExpect(status().isOk());

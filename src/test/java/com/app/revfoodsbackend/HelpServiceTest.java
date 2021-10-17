@@ -1,7 +1,9 @@
 package com.app.revfoodsbackend;
 
 import com.app.revfoodsbackend.model.Help;
+import com.app.revfoodsbackend.model.Supervisor;
 import com.app.revfoodsbackend.repository.HelpRepository;
+import com.app.revfoodsbackend.repository.SupervisorRepository;
 import com.app.revfoodsbackend.service.HelpService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
@@ -30,17 +32,26 @@ public class HelpServiceTest {
     @Autowired
     private HelpService helpService;
 
+    Supervisor supervisor;
+
+    @MockBean
+    private SupervisorRepository supervisorRepository;
+
+
     @BeforeEach
     void setUp() throws Exception {
         help = new Help();
         help.setHelpId(1);
         help.setHelpStatus(true);
         help.setHelp("Help me");
+        supervisor=new Supervisor();
+        supervisor.setSupervisorId(1);
     }
 
     @Test
     @Order(1)
     public void addHelpTest() {
+        when(supervisorRepository.findById(supervisor.getSupervisorId())).thenReturn(Optional.of(supervisor));
         when(helpRepository.save(help)).thenReturn(help);
         assertEquals(help, helpService.addHelp(help));
     }

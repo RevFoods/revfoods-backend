@@ -109,9 +109,8 @@ public class CustomerServiceTest {
         when(customerRepository.save(customer)).thenReturn(customer);
         when(customerRepository.getById(customer.getCustomerId())).thenReturn(customer);
         when(customerTableRepository.findAllByCustomerTableStatus(false)).thenReturn(Stream.of(new CustomerTable()).collect(Collectors.toList()));
-        assertEquals(customer, customerService.addCustomerTableToCustomer(1, customer.getCustomerId()));
+        assertEquals(customer, customerService.addCustomerTableToCustomer( customer.getCustomerId()));
     }
-
 
     @Test
     @Order(6)

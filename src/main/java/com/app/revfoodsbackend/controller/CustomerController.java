@@ -50,9 +50,9 @@ public class CustomerController {
 	}
 
 	@ApiOperation(value = "To add the CustomerTable in the Customer")
-	@PutMapping("/customer/{customerId}/customerTable/{customerTableId}")
-	public Customer addCustomerTableToCustomer(@PathVariable int customerTableId, @PathVariable int customerId) {
-		return customerService.addCustomerTableToCustomer(customerTableId, customerId);
+	@PutMapping("/customer/{customerId}")
+	public Customer addCustomerTableToCustomer(@PathVariable int customerId) {
+		return customerService.addCustomerTableToCustomer(customerId);
 	}
 
 	@ApiOperation(value = "To get the customers by the order status")

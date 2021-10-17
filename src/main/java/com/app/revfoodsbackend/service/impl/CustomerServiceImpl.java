@@ -61,7 +61,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer addCustomerTableToCustomer(int customerTableId, int customerId) {
+    public Customer addCustomerTableToCustomer(int customerId) {
         List<CustomerTable> customerTableList = customerTableRepository.findAllByCustomerTableStatus(false);
 
         CustomerTable customerTable = customerTableList.get(0);
