@@ -70,4 +70,9 @@ public class FoodOrderController {
 	public List<FoodOrder> getAllFoodOrdersByOrderStatusId(@PathVariable int orderStatusId) {
 		return foodOrderService.getAllFoodOrdersByOrderStatusId(orderStatusId);
 	}
+
+	@GetMapping("/foodOrders/chef")
+	public List<FoodOrder> getAllFoodOrdersForChef() {
+		return  foodOrderService.getAllFoodOrdersForChef();
+	}
 }

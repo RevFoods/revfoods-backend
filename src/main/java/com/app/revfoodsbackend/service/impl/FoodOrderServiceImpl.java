@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class FoodOrderServiceImpl implements FoodOrderService {
@@ -108,5 +109,12 @@ public class FoodOrderServiceImpl implements FoodOrderService {
     public List<FoodOrder> getAllFoodOrdersByOrderStatusId(int orderStatusId) {
         OrderStatus orderStatus = orderStatusService.getOrderStatusById(orderStatusId);
         return foodOrderRepository.findAllByOrderStatus(orderStatus);
+    }
+
+    @Override
+    public List<FoodOrder> getAllFoodOrdersForChef() {
+        List<FoodOrder> foodOrderList = foodOrderRepository.findAll();
+        foodOrderList.removeIf(foodOrder -> foodOrder.getOrderStatus().getOrderStatusId() > 3);
+        return foodOrderList;
     }
 }

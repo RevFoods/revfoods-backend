@@ -57,11 +57,11 @@ public class FoodServiceImpl implements FoodService {
         String foodType = "";
 
         if (localTime.getHour() > 11 && localTime.getHour() <= 19) {
-            foodType += "lunch";
+            foodType += "Lunch";
         } else if (localTime.getHour() > 19 || localTime.getHour() <= 2) {
-            foodType += "dinner";
+            foodType += "Dinner";
         } else {
-            foodType += "breakfast";
+            foodType += "Breakfast";
         }
 
         String finalFoodType = foodType;

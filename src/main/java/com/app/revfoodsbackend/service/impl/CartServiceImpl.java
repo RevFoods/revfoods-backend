@@ -64,7 +64,9 @@ public class CartServiceImpl implements CartService {
     @Override
     public List<Cart> getAllCartsByCustomerId(int customerId) {
         Customer customer = customerService.getCustomerByCustomerId(customerId);
-        return cartRepository.findCartsByCustomer(customer);
+        List<Cart> cartList =  cartRepository.findCartsByCustomer(customer);
+        cartList.removeIf(Cart::isCartOrderedStatus);
+        return cartList;
     }
 
     @Override

@@ -1,7 +1,9 @@
 package com.app.revfoodsbackend.service.impl;
 
 import com.app.revfoodsbackend.model.Help;
+import com.app.revfoodsbackend.model.Supervisor;
 import com.app.revfoodsbackend.repository.HelpRepository;
+import com.app.revfoodsbackend.repository.SupervisorRepository;
 import com.app.revfoodsbackend.service.HelpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,8 +16,13 @@ public class HelpServiceImpl implements HelpService {
     @Autowired
     private HelpRepository helpRepository;
 
+    @Autowired
+    private SupervisorRepository supervisorRepository;
+
     @Override
     public Help addHelp(Help help) {
+        Supervisor supervisor = supervisorRepository.findById(1).get();
+        help.setSupervisor(supervisor);
         return helpRepository.save(help);
     }
 
@@ -36,7 +43,9 @@ public class HelpServiceImpl implements HelpService {
 
     @Override
     public List<Help> getAllHelps() {
-        return helpRepository.findAll();
+        List<Help> helpList = helpRepository.findAll();
+        helpList.removeIf(Help::isHelpStatus);
+        return helpList;
     }
 
     @Override

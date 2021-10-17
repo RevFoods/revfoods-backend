@@ -14,4 +14,5 @@ public interface FoodOrderService {
     List<FoodOrder> getFoodOrdersByCustomerId(int customerId);
     FoodOrder updateFoodOrderStatus(int orderId, int orderStatusId);
     List<FoodOrder> getAllFoodOrdersByOrderStatusId(int orderStatusId);
+    List<FoodOrder> getAllFoodOrdersForChef();
 }

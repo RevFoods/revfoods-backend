@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.Hibernate;
 
 import io.swagger.annotations.ApiModel;
@@ -47,6 +48,7 @@ public class Cart {
 	@JoinColumn(name = "foodId", referencedColumnName = "foodId")
 	private Food food;
 
+	@JsonIgnore
 	@OneToOne(mappedBy = "cart")
 	private FoodOrder foodOrder;
 

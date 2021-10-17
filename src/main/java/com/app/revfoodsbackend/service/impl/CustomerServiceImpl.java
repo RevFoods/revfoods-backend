@@ -97,8 +97,6 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer addHelpToCustomer(int customerId, Help help) {
         Customer customer = customerRepository.getById(customerId);
-        Supervisor supervisor = supervisorService.getSupervisorBySupervisorId(1);
-        help.setSupervisor(supervisor);
         customer.setHelp(help);
         return customerRepository.save(customer);
     }

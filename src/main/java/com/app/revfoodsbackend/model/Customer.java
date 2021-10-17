@@ -53,10 +53,12 @@ public class Customer {
 	@ToString.Exclude
 	private List<Cart> cartList;
 
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "feedbackId", referencedColumnName = "feedbackId")
 	private Feedback feedback;
 
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "helpId", referencedColumnName = "helpId")
 	private Help help;

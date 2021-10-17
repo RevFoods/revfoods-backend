@@ -54,7 +54,7 @@ public class FoodController {
 	}
 
 	@ApiOperation(value = "To add food to food category")
-	@GetMapping("/food/foodCategory/{foodCategoryId}")
+	@PutMapping("/food/foodCategory/{foodCategoryId}")
 	public Food addFoodToFoodCategory(@RequestBody Food food, @PathVariable int foodCategoryId) {
 		return foodService.addFoodToFoodCategory(food, foodCategoryId);
 	}
