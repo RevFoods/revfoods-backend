@@ -39,14 +39,9 @@ pipeline {
         stage('Docker Deploy'){
             steps {
                 sh 'docker run -itd -p  2020:2020 lala14/revfoods-backend:${BUILD_NUMBER}'
+                sh 'docker logs lala14/revfoods-backend:${BUILD_NUMBER}'
             }
         }
 
-
-        stage('Archiving') {
-            steps {
-                 archiveArtifacts '*/target/.jar'
-            }
-        }
     }
 }
